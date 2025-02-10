@@ -1,0 +1,5 @@
+SERVICE_ACCOUNT_FILE = 'credentials/teste-locpay-6ce7f60178d5.json'
+SPREADSHEET_ID = '1HVlgRHzBjLS4yO9bOKrTeJwlitn9u40CU1rSFwH4VZo'
+AGE_NAMED_RANGE = 'df_by_age'
+PLATFORM_NAMED_RANGE = 'df_by_platform'
+COUNTRY_NAMED_RANGE = 'df_by_country'
