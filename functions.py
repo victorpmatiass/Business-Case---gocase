@@ -196,9 +196,9 @@ def create_column_campaign_goal(ad_set_name):
         return partes[0].strip()
 
 def classify_campaign(motivo,
-                      engagement_list = ['Viewed', 'Add to cart', 'LC Engagement', 'Instagram Post'],
+                      engagement_list = ['Viewed', 'LC Engagement', 'Instagram Post'], 
                       conversion_list = ['LC Checkout-Conversion', 'LC Conversion', 'LC Cart-Conversion',
-                                         'LC Purchase-Conversion', 'RL Cart-Conversion']):
+                                         'LC Purchase-Conversion', 'RL Cart-Conversion', 'Add to cart']):
     if motivo in conversion_list:
         return 'Conversão'
     elif motivo in engagement_list:
