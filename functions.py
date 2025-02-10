@@ -13,7 +13,6 @@ def get_named_range_as_dataframe(SERVICE_ACCOUNT_FILE, SPREADSHEET_ID, NAMED_RAN
     credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE)
     service = build('sheets', 'v4', credentials=credentials)
     try:
-        # Buscar os valores no intervalo nomeado diretamente
         result = service.spreadsheets().values().get(spreadsheetId=SPREADSHEET_ID,
                                                      range=NAMED_RANGE
                                                      ).execute()
@@ -70,7 +69,7 @@ def clean_percentage(value):
             return np.nan 
     return round(value, 2) if isinstance(value, (int, float)) else value 
 
-# Função interna para limpar valores numéricos que podem vir com vírgula como separador decimal
+# Função interna para limpar valores numéricos inteiros
 def clean_int_numeric(value):
     if isinstance(value, str):
         try:
@@ -79,6 +78,7 @@ def clean_int_numeric(value):
             return np.nan
     return value
 
+# Função interna para limpar valores numéricos decimais
 def clean_float_numeric(value):
     if isinstance(value, str):
         try:
@@ -252,7 +252,7 @@ def get_gdp_per_capita(country_code):
     
 ################################# analytics #####################################
 
-def calcular_percentuais_por_objetivo(df, main_column, classified_campaign_goal='Conversão'):
+def calculate_percentages_by_goal(df, main_column, classified_campaign_goal='Conversão'):
     df = df[df['classified_campaign_goal'] == classified_campaign_goal]
     
     df_agrupado = df.groupby([main_column, 'classified_campaign_goal'], as_index=False).agg(
